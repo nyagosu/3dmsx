@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+//#include <fat.h>
+
+int hblanks = 0;
+
+FILE * profile_fp;
+
+int Sys_FileOpenWrite (char *path)
+	__attribute__ ((no_instrument_function));
+int Sys_FileWrite (int handle, void *data, int count)
+	__attribute__ ((no_instrument_function));
+void Sys_FileClose (int handle)
+	__attribute__ ((no_instrument_function));
+
+int Sys_FileOpenWrite (char *path)
+{
+/*
+	static int init = true;
+	if( init ){
+		for( i=0;i<10;i++ ) fp[i] = NULL;
+		init = false;
+	}
+*/
+	profile_fp = fopen( path, "w" );
+	if( profile_fp == NULL ){
+		return -1;
+	}else{
+		return 0;
+	}
+}
+int Sys_FileWrite (int handle, void *data, int count)
+{
+	int ret = fwrite( data , 1, count, profile_fp );
+	return ret;
+}
+
+void Sys_FileClose (int handle)
+{
+	fclose(profile_fp);
+}
