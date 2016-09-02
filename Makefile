@@ -29,9 +29,9 @@ include $(DEVKITARM)/3ds_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	source
+SOURCES		:=	source/3DS source/EmuLib source/fmsx source/z80 source/lua
 DATA		:=	data
-INCLUDES	:=	include
+INCLUDES	:=	source/3DS source/EmuLib source/fmsx source/z80 source/lua
 #ROMFS		:=	romfs
 
 #---------------------------------------------------------------------------------
