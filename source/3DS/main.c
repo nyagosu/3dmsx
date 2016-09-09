@@ -5,7 +5,7 @@
 #include <3ds.h>
 #include "MSX.h"
 #include <stdio.h>
-//#include <string.h>
+#include <string.h>
 //#include <stdlib.h>
 //#include <NDS.h>
 //#include <fat.h>
@@ -98,6 +98,7 @@ void StopSound(void)
 void InitDS()
 {
 	gfxInitDefault();
+
 	//gfxSet3D(true); // uncomment if using stereoscopic 3D
 
 	// メモリのウェイトと使用権の設定
@@ -156,6 +157,18 @@ void InitDS()
 //	psg = &_psg;
 //	scc = &_scc;
 
+	//ログ初期化
+//	InitLOG();
+	
+	//ファイルシステム初期化
+//	InitFAT();
+
+//	cygprofile_begin();
+//	cygprofile_enable();
+
+	// Sound reset
+//	ResetSound(SampleRate);
+
 }
 
 
@@ -185,52 +198,19 @@ int InitFAT()
 	return true;
 }
 
-int main(int ac, char*av[])
-{
-	char scriptname[256];
-	int ret = 1;
-//	IPC2->soundCommand = 0;
-
-	//DS初期化
-	InitDS();
-
-	//ログ初期化
-//	InitLOG();
-	
-	//ファイルシステム初期化
-//	InitFAT();
-
-//	cygprofile_begin();
-//	cygprofile_enable();
-	
-	//VM 初期化
-//	InitMachine();
-//	InitMSX();
-
-	// Sound reset
-	ResetSound(SampleRate);
-
+void testloop(){
 	int x,y;
 	x = 100;
 	y = 100;
 	int adr;
-	
-	strcpy( scriptname, "fmsxDS.lua" );
-	while( aptMainLoop() ){
-//		if( ret ){
-			//	スクリプト実行
-//			StartLua(scriptname);
-//			cygprofile_disable();
-//			cygprofile_end();
-//		}
-//		ret = fileselect( "fat:/", "LUA", scriptname );
 
+	while( aptMainLoop() ){
 		gspWaitForVBlank();
 		hidScanInput();
 
 		// Your code goes here
 
-		u32 kDown = hidKeysDown();
+		u32 kDown = hidKeysHeld();
 		if (kDown & KEY_START) break; // break in order to return to hbmenu
 
 		if (kDown & KEY_UP    ) y = y + 1;
@@ -251,6 +231,25 @@ int main(int ac, char*av[])
 		gfxFlushBuffers();
 		gfxSwapBuffers();
 	}
+}
+
+
+int main(int ac, char*av[])
+{
+	char scriptname[256];
+
+	//DS初期化
+	InitDS();
+
+	//VM 初期化
+//	InitMachine();
+//	InitMSX();
+
+	strcpy( scriptname, "fmsxDS.lua" );
+//	ret = fileselect( "fat:/", "LUA", scriptname );
+
+	//	スクリプト実行
+	StartLua(scriptname);
 
 	gfxExit();
 	return 0;

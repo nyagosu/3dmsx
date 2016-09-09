@@ -228,11 +228,11 @@ static int ui_keysDown(lua_State *L){
 	pushkeydata(L,k);
 	return 1;
 }
-static int ui_keysDownRepeat(lua_State *L){
-	u32 k = keysDownRepeat();
-	pushkeydata(L,k);
-	return 1;
-}
+//static int ui_keysDownRepeat(lua_State *L){
+//	u32 k = keysDownRepeat();
+//	pushkeydata(L,k);
+//	return 1;
+//}
 
 static int ui_keysHeld(lua_State *L){
 	u32 k = keysHeld();
@@ -246,12 +246,12 @@ static int ui_keysUp(lua_State *L){
 	return 1;
 }
 
-static int ui_keysSetRepeat(lua_State *L){
-	u8 d = (u8)luaL_checknumber(L, 1);
-	u8 r = (u8)luaL_checknumber(L, 2);
-	keysSetRepeat( d, r );
-	return 0;
-}
+//static int ui_keysSetRepeat(lua_State *L){
+//	u8 d = (u8)luaL_checknumber(L, 1);
+//	u8 r = (u8)luaL_checknumber(L, 2);
+//	keysSetRepeat( d, r );
+//	return 0;
+//}
 static int ui_touchReadXY(lua_State *L){
 	touchPosition t;
 	touchRead(&t);
@@ -339,10 +339,10 @@ static const luaL_Reg uilib[] = {
 	{"waitForVBlank", ui_waitForVBlank },
 	{"scanKeys"     , ui_scanKeys},
 	{"keysDown"     , ui_keysDown},
-	{"keysDownRepeat",ui_keysDownRepeat},
+//	{"keysDownRepeat",ui_keysDownRepeat},
 	{"keysHeld"     , ui_keysHeld},
 	{"keysUp"       , ui_keysUp},
-	{"keysSetRepeat", ui_keysSetRepeat},
+//	{"keysSetRepeat", ui_keysSetRepeat},
 	{"touchReadXY"  , ui_touchReadXY},
 	{"fileselect"   , ui_fileselect},
 	{"soundStart"   , ui_soundStart},
