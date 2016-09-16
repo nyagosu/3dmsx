@@ -3,6 +3,7 @@
 
 #define printf LOG
 
+
 typedef struct {
 	int siz;
 	byte buf[0];
@@ -10,6 +11,9 @@ typedef struct {
 
 extern byte touchMode;				/* touch Panel Mode          */
 
+#define RGB16(a,r,g,b)  RGB15(r,g,b)|((a)<<15)
+
+void InitLOG(void);
 void LOG( char * str , ... );
 void drawAllKeyboard(void);
 void createTouchMap();

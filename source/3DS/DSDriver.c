@@ -31,6 +31,8 @@ char *Disks[2][MAXDISKS+1];    /* Disk names for each drive */
 
 extern byte *MemMap[4][4][8];   /* Memory maps [PPage][SPage][Addr] */
 
+int autoFitScreen=0;
+
 /** Various variables ****************************************/
 //#define WIDTH  272
 //#define HEIGHT 228
@@ -76,6 +78,34 @@ int pad_type = 0;
 #define SetUpJoy(AA)   ( JoyKeyMap[(AA).code]&=~((AA).mask) )
 
 LLIST * LOGData;
+
+void waitForVBlank(int cnt)
+{
+	int i;
+	for(i=0;i<cnt;i++){
+		gspWaitForVBlank();
+	}
+}
+
+void HBlankHandler()
+	__attribute__ ((no_instrument_function));
+
+void VBlankHandler(void)
+{
+//	scanKeys();
+//	lua_vsync();
+//	LOG("vsync");
+}
+
+
+void InitInterruptHandler()
+{
+//	irqInit();
+//	irqSet(IRQ_HBLANK, HBlankHandler);
+//	irqSet(IRQ_VBLANK, VBlankHandler);
+//	irqEnable( IRQ_HBLANK | IRQ_VBLANK );
+}
+
 
 void InitLOG(void)
 {
@@ -176,6 +206,17 @@ void ReadKeyBind( char * fn, KEYBIND * kb )
 
 void vid_close()
 {
+}
+
+void changeBGSize(byte V)
+{
+	static int line212flg = -1;
+	if( autoFitScreen ){
+		if(line212flg != (V&0x80) ){
+			line212flg = (V&0x80);
+//		    BACKGROUND.bg3_rotation.vdy  = (1 << 8) + (line212flg?32:0);
+		}
+	}
 }
 
 /** InitMachine() ********************************************/
