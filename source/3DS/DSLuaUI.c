@@ -6,14 +6,11 @@
 #include "lualib.h"
 #include "lauxlib.h"
 #include "DSGraph.h"
+#include "DSSound.h"
 #include "DSDriver.h"
 #include "DSFileList.h"
 
 extern LLIST * LOGData;
-
-void StartSound(void);
-void StopSound(void);
-void waitForVBlank(int cnt);
 
 static int ui_pset(lua_State *L) {
 	int g = (int)luaL_checknumber(L, 1);

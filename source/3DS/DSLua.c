@@ -18,8 +18,8 @@ lua_State *lua = NULL;
 
 void StartLua(char * luaname )
 {
-	char * luapath[4] = { "fat:/", "fat:/fmsxDS/", "fat:/emu/fmsxDS/", "fat:/emulator/fmsxDS/" };
-	char * pkgpath    = "package.path=\"fat:/?.lua;fat:/fmsxDS/?.lua;fat:/emu/fmsxDS/LUA/?.lua;fat:/emulator/fmsxDS/LUA/?.lua\"";
+	char * luapath[4] = { "sdmc:/", "sdmc:/fmsxDS/", "sdmc:/emu/fmsxDS/", "sdmc:/emulator/fmsxDS/" };
+	char * pkgpath    = "package.path=\"sdmc:/?.lua;sdmc:/fmsxDS/?.lua;sdmc:/emu/fmsxDS/LUA/?.lua;sdmc:/emulator/fmsxDS/LUA/?.lua\"";
 	int ret;
 	int cnt = 0;
 	char nm[64];

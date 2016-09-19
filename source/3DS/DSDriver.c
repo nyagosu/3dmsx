@@ -22,9 +22,6 @@
 #include "DSFileList.h"
 #include "DSLua.h"
 
-#define RGB16(a,r,g,b)  RGB565(r,g,b)|((a)<<15)
-
-
 /** Public parameters ****************************************/
 int UseSound  = 8192;          /* Sound driver frequency    */
 char *Disks[2][MAXDISKS+1];    /* Disk names for each drive */
@@ -106,6 +103,19 @@ void InitInterruptHandler()
 //	irqEnable( IRQ_HBLANK | IRQ_VBLANK );
 }
 
+void InitSDMC(void)
+{
+
+}
+
+void ExitSDMC(void)
+{
+
+}
+void ExitLOG(void)
+{
+
+}
 
 void InitLOG(void)
 {
@@ -242,7 +252,7 @@ int InitMachine(void)
 
 	/* Set SCREEN8 colors */
 	for(J=0;J<256;J++ ){
-		BPal[J] = RGB16(1, J&0x1C, (J&0xE0)>>3, (J&0x03)<<3 );
+		BPal[J] = RGB565(J&0x1C, (J&0xE0)>>3, (J&0x03)<<3 );
 	}
 
 //	XBuf  = (char*) BG_GFX;
@@ -416,8 +426,8 @@ void Keyboard_proc(void)
 			if( k != ok ){
 //				pen = true;
 				if( ok != k ){
-					drawKey( ok, RGB16(1,31,31,31) );
-					drawKey(  k, RGB16(1,28,19,19) );
+					drawKey( ok, RGB565(31,31,31) );
+					drawKey(  k, RGB565(28,19,19) );
 					SetUpKey(KeyBinds[ok]);
 					SetDownKey(KeyBinds[k]);
 				}
@@ -438,7 +448,7 @@ void Keyboard_proc(void)
 			}
 		}
 		if( k&KEY_TOUCH ){
-			drawKey( ok, RGB16(1,31,31,31) );
+			drawKey( ok, RGB565(31,31,31) );
 			SetUpKey(KeyBinds[ok]);
 			if( KeyBinds[ok].Hold&1 ){
 				hkey[KeyBinds[ok].code] ^= KeyBinds[ok].mask;
