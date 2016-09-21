@@ -4,6 +4,7 @@
 void InitSound( void );
 void ExitSound( void );
 void StartSound( void );
+void StopSound( void );
 void installMSXSoundFIFO( void );
 void CalcSound( void );
 
