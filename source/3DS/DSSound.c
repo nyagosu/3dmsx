@@ -27,13 +27,6 @@ int psgON      = true;
 int sccON      = true;
 int adrflg = 0;
 
-void StopSound();
-
-static void IrqTimer0(void)
-{
-	SoundProcTiming++;
-}
-
 void InitSound(void)
 {
 /*

@@ -1,0 +1,30 @@
+{
+  "version": "0.1.0",
+  "command": "cmd",
+  "isShellCommand": true,
+  "showOutput": "always",
+  "args": ["/C"],
+  "tasks": [
+    {
+      "taskName": "build",
+      "suppressTaskName": true,
+      "args": [
+          "build.bat"
+      ]
+    },
+    {
+      "taskName": "clean",
+      "suppressTaskName": true,
+      "args": [
+          "\"build.bat clean\" "
+      ]
+    },
+    {
+      "taskName": "citra",
+      "suppressTaskName": true,
+      "args": [
+          "\"F:\\home\\emu\\Handheld\\3DS\\citra-latest-windows-amd64\\citra.exe ${workspaceRoot}\\3dmsx.3dsx\""
+      ]
+    }
+  ]
+}

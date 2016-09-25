@@ -5,8 +5,8 @@
 #include "MSX.h"
 #include <stdio.h>
 #include <string.h>
-//#include <stdlib.h>
 #include "DSDriver.h"
+#include "DSSound.h"
 #include "DSLua.h"
 
 void Init3DS()

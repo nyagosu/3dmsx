@@ -16,5 +16,7 @@ void LOG( char * str , ... );
 void drawAllKeyboard(void);
 void createTouchMap();
 void changeBGSize(byte V);
+void InitSDMC(void);
+void ExitSDMC(void);
 
 #endif
