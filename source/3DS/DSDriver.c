@@ -63,8 +63,6 @@ extern int UseNarrow;
 extern int Usex2Mode;
 extern byte TapeHeader[8];
 
-//extern int InitSound(int Rate,int Verb);
-
 void drawAllKeyboard(void);
 
 int pad_type = 0;

@@ -32,11 +32,11 @@
 /** INLINE ***************************************************/
 /** Different compilers inline C functions differently.     **/
 /*************************************************************/
-#ifdef __GNUC__
-#define INLINE inline
-#else
-#define INLINE static
-#endif
+//#ifdef __GNUC__
+//#define INLINE inline
+//#else
+//#define INLINE static
+//#endif
  
 /*************************************************************/
 /** Other usefull defines                                   **/

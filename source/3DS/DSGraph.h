@@ -34,6 +34,8 @@ typedef uint16_t uint16; ///< 16-bit unsigned integer
 
 extern u32 clsColor[2];
 
+void InitGraph(void);
+void ExitGraph(void);
 void pset( gfxScreen_t screen, gfx3dSide_t side, u16 x,u16 y,             u32 col );
 void box ( gfxScreen_t screen, gfx3dSide_t side, u16 x,u16 y,u16 w,u16 h, u32 col );
 void line( gfxScreen_t screen, gfx3dSide_t side, u16 x,u16 y,u16 w,u16 h, u32 col );

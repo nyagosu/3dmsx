@@ -5,38 +5,24 @@
 //#include "MSX.h"
 #include <stdio.h>
 #include <string.h>
-//#include <stdlib.h>
 #include "DSDriver.h"
 #include "DSSound.h"
 #include "DSLua.h"
 
 void Init3DS()
 {
-	//グラフィック初期化
-	gfxInitDefault();
-	//gfxSet3D(true); // uncomment if using stereoscopic 3D
-
-	//SDカード初期化
+	InitGraph();
 	InitSDMC();
-
-	//ログ初期化
 	InitLOG();
-
-	//サウンド初期化
 	InitSound();
-
 }
 
 void Exit3DS(void)
 {
-	//サウンド終了
 	ExitSound();
-
-	//ログ初期化
 	ExitLOG();
-
-	//グラフィック初期化
-	gfxExit();
+	InitSDMC();
+	ExitGraph();
 }
 
 /*
@@ -78,8 +64,7 @@ void testloop(){
 
 int main(int ac, char*av[])
 {
-
-	//3DS初期化
+	// 3DS初期化
 	Init3DS();
 
 	char scriptname[256];

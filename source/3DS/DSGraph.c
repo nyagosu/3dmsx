@@ -17,6 +17,50 @@ extern void LOG( char * str , ... );
 
 void drawAllKeyboard(void);
 
+void InitGraph(void)
+{
+	//グラフィック初期化
+	gfxInitDefault();
+
+//	PrintConsole console =
+//	{
+//		//Font:
+//		{
+//			(u8*)default_font_bin, //font gfx
+//			0, //first ascii character in the set
+//			128, //number of characters in the font set
+//		},
+//		0,0,  //cursorX cursorY
+//		0,0,  //prevcursorX prevcursorY
+//		40,   //console width
+//		30,   //console height
+//		0,    //window x
+//		0,    //window y
+//		32,   //window width
+//		24,   //window height
+//		3,    //tab size
+//		0,    //font character offset
+//		0,    //print callback
+//		false //console initialized
+//	};
+
+	//コンソール初期化
+	consoleInit(GFX_BOTTOM, NULL );
+	printf( "Initialized Console\r\n" );
+
+	//3D表示設定
+//	gfxSet3D(true);
+//	printf( "Use 3D view.\r\n" );
+
+	//ダブルバッファ設定
+//	printf( "Use double buffering.\r\n" );
+}
+
+void ExitGraph(void)
+{
+	gfxExit();
+}
+
 void memcpy8( u8 * dst,u8 * src, int cnt ){
 	int c;
 	for( c=0;c<cnt;c++ ) *dst++ = *src++;
