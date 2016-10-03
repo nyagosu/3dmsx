@@ -29,6 +29,8 @@ int adrflg = 0;
 
 void InitSound(void)
 {
+	printf( "InitSound\r\n" );
+
 /*
 	SoundPause = true;
 	SoundInit  = false;
@@ -46,6 +48,7 @@ void InitSound(void)
 
 void ExitSound(void)
 {
+	printf( "ExitSound\r\n" );
 }
 
 void StartSound(void)

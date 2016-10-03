@@ -103,21 +103,24 @@ void InitInterruptHandler()
 
 void InitSDMC(void)
 {
-
+	printf( "InitSDMC\r\n" );
 }
 
 void ExitSDMC(void)
 {
+	printf( "ExitSDMC\r\n" );
 
 }
 void ExitLOG(void)
 {
+	printf( "ExitLOG\r\n" );
 
 }
 
 void InitLOG(void)
 {
-	LOGData = LLIST_new();
+	printf( "InitLOG\r\n" );
+//	LOGData = LLIST_new();
 }
 
 #define LOG_CHR_NUM  51
@@ -129,8 +132,9 @@ void LOG( char * str , ... )
 	char * n;
 	int l;
 	va_start(args,str);
-	vsprintf(buf,str,args);
+	vprintf(str,args);
 	va_end(args);
+/*
 	n = buf;
 	l = strlen( buf );
 	while(l){
@@ -149,6 +153,7 @@ void LOG( char * str , ... )
 		drawText( GFX_BOTTOM,GFX_LEFT, 0, 184, (u8*)a, 0xFFFF, clsColor[1] );
 		LLIST_add( LOGData, a );
 	}
+	*/
 }
 
 void RomSelect( int num )

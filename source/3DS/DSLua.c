@@ -23,11 +23,20 @@ void StartLua(char * luaname )
 	int ret;
 	int cnt = 0;
 	char nm[64];
+	printf("lua_open()\r\n");
 	lua = lua_open();
-	if( lua == NULL ) return;
+	if( lua == NULL ){
+		printf("lua_open() error\r\n");
+		return;
+	}
+	printf("luaL_openlibs\r\n");
 	luaL_openlibs(lua);	// internal lib open
+	printf("luaopen_msx\r\n");
 	luaopen_msx(lua);	// MSX Lib open
+	printf("luaopen_ui\r\n");
 	luaopen_ui(lua);	// ui Lib open
+
+	printf("luaopen end\r\n");
 
 	/* package ÉpÉXê›íË */
 	luaL_loadstring( lua, pkgpath );
@@ -74,6 +83,7 @@ void StartLua(char * luaname )
 		}
 	}
 	lua_close(lua);
+	printf("StartLua end\r\n");
 }
 
 int lua_LuaFunc(int flg)

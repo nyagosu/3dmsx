@@ -238,12 +238,10 @@ static int msx_setprop(lua_State *L){
 	LOG( "SetProp:[%s]", nm );
 	if     ( !strcmp(nm,"RAMPages"  ) ){ if( !Power ){ RAMPages  = luaL_checkint(L, 3); } }
 	else if( !strcmp(nm,"VRAMPages" ) ){ if( !Power ){ VRAMPages = luaL_checkint(L, 3); } }
-/*
-	else if( !strcmp(nm,"scr_x"     ) ){ BACKGROUND.scroll[3].x      = luaL_checkint(L, 3); }
-	else if( !strcmp(nm,"scr_y"     ) ){ BACKGROUND.scroll[3].y      = luaL_checkint(L, 3); }
-	else if( !strcmp(nm,"scale_x"   ) ){ BACKGROUND.bg3_rotation.hdx = luaL_checkint(L, 3) + (1 << 8); }
-	else if( !strcmp(nm,"scale_y"   ) ){ BACKGROUND.bg3_rotation.vdy = luaL_checkint(L, 3) + (1 << 8); }
-*/
+	else if( !strcmp(nm,"scr_x"     ) ){ /*BACKGROUND.scroll[3].x      = luaL_checkint(L, 3); */}
+	else if( !strcmp(nm,"scr_y"     ) ){ /*BACKGROUND.scroll[3].y      = luaL_checkint(L, 3); */}
+	else if( !strcmp(nm,"scale_x"   ) ){ /*BACKGROUND.bg3_rotation.hdx = luaL_checkint(L, 3) + (1 << 8); */}
+	else if( !strcmp(nm,"scale_y"   ) ){ /*BACKGROUND.bg3_rotation.vdy = luaL_checkint(L, 3) + (1 << 8); */}
 	else if( !strcmp(nm,"UPeriod"   ) ){ UPeriod    = luaL_checkint(L, 3); }
 	else if( !strcmp(nm,"Verbose"   ) ){ Verbose    = luaL_checkint(L, 3); }
 //	else if( !strcmp(nm,"Version"   ) ){ NewMode    = ((NewMode&(~MSX_MODEL))|(luaL_checkint(L, 3)&MSX_MODEL)); }

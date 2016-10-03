@@ -25,7 +25,7 @@ void Exit3DS(void)
 	ExitGraph();
 }
 
-/*
+
 void testloop(){
 	int x,y;
 	x = 100;
@@ -60,7 +60,6 @@ void testloop(){
 		gfxSwapBuffers();
 	}
 }
-*/
 
 int main(int ac, char*av[])
 {
@@ -71,9 +70,11 @@ int main(int ac, char*av[])
 	strcpy( scriptname, "fmsxDS.lua" );
 
 	//	スクリプト実行
+	printf( "StartLua\r\n" );
 	StartLua(scriptname);
 
-//	void testloop();
+	printf( "testloop\r\n" );
+	testloop();
 
 	Exit3DS();
 	return 0;

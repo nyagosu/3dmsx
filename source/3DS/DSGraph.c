@@ -58,6 +58,7 @@ void InitGraph(void)
 
 void ExitGraph(void)
 {
+	printf( "ExitGraph\r\n" );
 	gfxExit();
 }
 
