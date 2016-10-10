@@ -1,9 +1,6 @@
 
 --	ui.cls(3);
-	ui.pset(2, 0,0,0xFFFFFF );
-	ui.pset(2, 200,0,0xffffff );
-	ui.pset(2, 200,151,0xFFFFFF );
-	ui.box ( 2, 0,0,100,200, 0xFFFFFF );
+	ui.pset(1, 200,100,0xFFFF );
 --[[
 
 	ui.fill( 1, 0,0,256,212, RGB(1,0,0,31) );

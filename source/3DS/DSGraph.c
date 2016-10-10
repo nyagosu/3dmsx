@@ -69,14 +69,16 @@ void memcpy8( u8 * dst,u8 * src, int cnt ){
 
 void memcpy16( u16 * dst,u16 * src, int cnt ){
 	int c;
+
 	for( c=0;c<cnt;c++ ) *dst++ = *src++;
 }
 
 void pset( gfxScreen_t screen, gfx3dSide_t side, u16 x, u16 y, u32 col )
 {
-	u16  sx, sy;
-	u8 * gfx = gfxGetFramebuffer(screen, side, &sx, &sy );
-	gfx = gfx + (y*sy+x) * 3;
+	u16  w, h;
+	u8 * gfx = gfxGetFramebuffer(screen, side, &h, &w );
+//	printf("sx %d,sy%d", w,h);
+	gfx = gfx + (x*h+(h-y-1) ) * 3;
 	*(gfx  ) = (col>>16)&0xFF;
 	*(gfx+1) = (col>> 8)&0xFF;
 	*(gfx+2) = (col    )&0xFF;

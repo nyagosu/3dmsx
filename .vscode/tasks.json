@@ -23,8 +23,8 @@
       "taskName": "citra",
       "suppressTaskName": true,
       "args": [
-          "\"F:\\home\\emu\\Handheld\\3DS\\citra-latest-windows-amd64\\citra.exe ${workspaceRoot}\\3dmsx.3dsx\""
-      ]
+        "citra.bat ${workspaceRoot}"
+     ]
     }
   ]
 }
